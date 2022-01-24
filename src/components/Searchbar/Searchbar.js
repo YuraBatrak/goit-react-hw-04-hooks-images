@@ -1,7 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import s from "./Searchbar.module.css";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Searchbar({ onSubmit }) {
   const [query, setQuery] = useState("");
@@ -15,7 +16,7 @@ function Searchbar({ onSubmit }) {
     e.preventDefault();
 
     if (query.trim() === "") {
-      toast.error("Enter some word!");
+      toast("Enter some word!");
       return;
     }
     onSubmit(query);

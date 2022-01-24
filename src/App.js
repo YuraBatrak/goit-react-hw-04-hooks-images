@@ -3,6 +3,7 @@ import Spinner from "./components/Loader";
 import Searchbar from "./components/Searchbar";
 import ImageGallery from "./components/ImageGallery";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Button from "./components/Button";
 
 import Modal from "./components/Modal";
@@ -20,11 +21,11 @@ function App() {
       setIsLoading(true);
       fetchApi(searchQuery, page)
         .then((photos) => {
-          if (photos.length < 1) {
+          if (photos.length < 12) {
             setShowLoadMoreBtn(false);
+            toast("no more pictures ");
             return;
           }
-
           setPhoto((prev) => [...prev, ...filterPictures(photos)]);
           setShowLoadMoreBtn(true);
         })
